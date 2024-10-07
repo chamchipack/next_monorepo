@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ESNext",
+    "moduleResolution": "node", // Node 방식으로 모듈을 찾습니다.
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mui/*": ["./node_modules/@mui/*"]
+    },
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

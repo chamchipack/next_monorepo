@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Next.js Monorepo",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "${workspaceFolder}/running.sh"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}
