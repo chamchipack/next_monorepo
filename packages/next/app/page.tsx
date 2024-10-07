@@ -1,12 +1,15 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { MyButton } from "package/src/MyButton";
+import { MyChip } from "package/src/MyChip";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <MyButton />
+        <MyChip />
+        김도영
         <Image
           className={styles.logo}
           src="https://nextjs.org/icons/next.svg"
@@ -21,7 +24,6 @@ export default function Home() {
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
-
         <div className={styles.ctas}>
           <a
             className={styles.primary}

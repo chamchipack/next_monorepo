@@ -40,3 +40,22 @@ a {
     color-scheme: dark;
   }
 }
+
+@font-face {
+  font-family: "KBO-Dia-Gothic-Bold"; /* 폰트 이름 지정 */
+  src:
+    url("/app/fonts/KBO-Dia-Gothic_bold.woff") format("woff"),
+    url("/app/fonts/KBO-Dia-Gothic_bold.ttf") format("truetype"),
+    url("/app/fonts/KBO-Dia-Gothic_bold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 글로벌 스타일에서 폰트 사용 */
+:root {
+  --font-kbo-dia-gothic-bold: "KBO Dia Gothic Bold", sans-serif;
+}
+
+body {
+  font-family: var(--font-kbo-dia-gothic-bold); /* 기본 폰트 설정 */
+}
