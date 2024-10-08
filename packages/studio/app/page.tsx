@@ -8,7 +8,6 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <MyButton />
-        <MyChip />
         김도영
         <Image
           className={styles.logo}

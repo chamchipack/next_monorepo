@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "dev": "concurrently \"npm run dev --workspace=studio\"",
-    "build": "concurrently \"npm run build --workspace=studio\"",
-    "start": "concurrently \"npm run start --workspace=studio\""
+    "build": "./build.sh build",
+    "start": "./build.sh start"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
