@@ -3,6 +3,11 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import { DemoThemeData } from "@/config/utils/Theme";
 import { useMemo } from "react";
+import { SessionProvider } from "next-auth/react";
+import { RecoilRoot } from "recoil";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const DemoThemeProvider = ({
   children,
@@ -15,10 +20,16 @@ const DemoThemeProvider = ({
 const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <>
-      <DemoThemeProvider>
-        <CssBaseline />
-        <main>{children}</main>
-      </DemoThemeProvider>
+      <RecoilRoot>
+        <DemoThemeProvider>
+          <SessionProvider>
+            <CssBaseline />
+            <QueryClientProvider client={queryClient}>
+              <main>{children}</main>
+            </QueryClientProvider>
+          </SessionProvider>
+        </DemoThemeProvider>
+      </RecoilRoot>
     </>
   );
 };

@@ -9,10 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "package": "1.0.0",
     "react": "^18",
     "react-dom": "^18",
     "next": "14.2.14",
-    "package": "1.0.0"
+    "@fullcalendar/common": "^5.11.5",
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/interaction": "^6.1.9",
+    "@fullcalendar/list": "^6.1.10",
+    "@fullcalendar/react": "^6.1.9",
+    "@fullcalendar/timegrid": "^6.1.9"
   },
   "devDependencies": {
     "typescript": "^5",

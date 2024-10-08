@@ -7,8 +7,6 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <MyButton />
-        김도영
         <Image
           className={styles.logo}
           src="https://nextjs.org/icons/next.svg"
