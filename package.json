@@ -2,13 +2,14 @@
   "name": "nextjs",
   "private": true,
   "workspaces": [
-    "packages/next",
-    "packages/package"
+    "packages/studio",
+    "packages/package",
+    "packages/voca"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev --workspace=next\"",
-    "build": "concurrently \"npm run build --workspace=next\"",
-    "start": "concurrently \"npm run start --workspace=next\""
+    "dev": "concurrently \"npm run dev --workspace=studio\"",
+    "build": "concurrently \"npm run build --workspace=studio\"",
+    "start": "concurrently \"npm run start --workspace=studio\""
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
