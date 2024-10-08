@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "kbo";
+  src: url("./fonts/KBO-Dia-Gothic_bold.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "pretendard";
+  src: url("./fonts/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "nanum";
+  src: url("./fonts/NanumBarunGothic.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "tmoney";
+  src: url("./fonts/TmoneyRoundWindRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}

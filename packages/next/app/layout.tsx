@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
+import { Noto_Sans_KR } from "next/font/google";
 
-// KBO Dia Gothic Bold 폰트 설정
-const kboDiaGothicBold = localFont({
-  src: "./fonts/KBO-Dia-Gothic_bold.woff",
-  variable: "--font-kbo-dia-gothic-bold",
-  weight: "400 700", // 실제 weight에 맞게 설정
+const inter = Noto_Sans_KR({
+  subsets: ["latin"],
+  variable: "--noto_sans_kr",
+  weight: "600",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +20,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${kboDiaGothicBold.variable}`}>{children}</body>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className={`${inter.className} ${inter.style.fontFamily}`}>
+        {children}
+      </body>
     </html>
   );
 }
