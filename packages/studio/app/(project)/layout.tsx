@@ -1,37 +1,11 @@
-"use client";
+import Providers from './Providers';
 
-import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import { DemoThemeData } from "@/config/utils/Theme";
-import { useMemo } from "react";
-import { SessionProvider } from "next-auth/react";
-import { RecoilRoot } from "recoil";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
-
-const DemoThemeProvider = ({
+export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) => {
-  const theme = useMemo(() => createTheme(DemoThemeData), [DemoThemeData]);
-
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
-};
-
-const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <>
-      <RecoilRoot>
-        <DemoThemeProvider>
-          <SessionProvider>
-            <CssBaseline />
-            <QueryClientProvider client={queryClient}>
-              <main>{children}</main>
-            </QueryClientProvider>
-          </SessionProvider>
-        </DemoThemeProvider>
-      </RecoilRoot>
-    </>
+    <Providers>{children}</Providers>
   );
-};
-
-export default Layout;
+}

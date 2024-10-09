@@ -1,3 +1,5 @@
+"use client";
+
 import { useClientSize } from "package/src/hooks/useMediaQuery";
 import { breadCrumbState } from "@/config/recoil/breadcrumb/state";
 import { authUser } from "@/config/recoil/recoilState";
@@ -48,7 +50,7 @@ const PathInformation = ({ pathname, breadCrumb }: PathInfo) => {
   );
 };
 
-export default function _({
+export default function NodeComponent({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const { data: session, status } = useSession();

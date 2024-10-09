@@ -3,3 +3,5 @@ node_modules/
 
 # Ignore node_modules in workspaces
 packages/**/node_modules/
+
+.env*.local

@@ -1,8 +1,7 @@
-"use client";
 import React from "react";
 import Header from "@/components/sample/Header";
 import Sidebar from "@/components/sample/Sidebar";
-import _ from "./_";
+import NodeComponent from "./NodeComponent";
 
 export default function Layout({
   children,
@@ -17,7 +16,7 @@ export default function Layout({
         }}
       >
         <Sidebar />
-        <_ children={children} />
+        <NodeComponent children={children} />
       </div>
     </>
   );
