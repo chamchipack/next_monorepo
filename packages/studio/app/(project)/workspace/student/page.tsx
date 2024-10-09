@@ -10,6 +10,7 @@ const MainPage = async () => {
   return (
     <>
       <StudentFilter />
+      <div>{form?.total}그억</div>
       <StudentGrid />
     </>
   );

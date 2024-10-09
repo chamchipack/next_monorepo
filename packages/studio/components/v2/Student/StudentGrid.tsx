@@ -195,7 +195,7 @@ const StudentGrid = () => {
     []
   );
 
-  if (!isRendering) return <Skeleton sx={{ width: 100, height: 30, mr: 1 }} />;
+  // if (!isRendering) return <Skeleton sx={{ width: 100, height: 30, mr: 1 }} />;
 
   return (
     <div>
