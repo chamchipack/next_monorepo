@@ -29,9 +29,9 @@ const HeaderClock = () => {
   return (
     <>
       <Typography
+        variant="subtitle2"
         sx={{
           color: "text.primary",
-          fontSize: "1rem",
         }}
       >
         {headerTime}

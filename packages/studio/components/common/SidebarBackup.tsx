@@ -10,7 +10,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Avatar from "@mui/material/Avatar";
 import { Stack, Typography, Box } from "@mui/material";
 import { Pagetitles } from "@/config/type/types";
-import ProgressDialog from "@/components/modal/ProgressModal";
+import ProgressDialog from "package/src/Modal/ProgressModal";
 import { useRecoilState } from "recoil";
 import { authUser } from "@/config/recoil/recoilState";
 

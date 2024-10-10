@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { authUser } from "@/config/recoil/recoilState";
 import Link from "next/link";
 
-import ProgressDialog from "@/components/modal/ProgressModal";
+import ProgressDialog from "package/src/Modal/ProgressModal";
 
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";

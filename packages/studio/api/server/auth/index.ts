@@ -136,7 +136,6 @@ class AuthService {
       isSuperAccount: true,
       ...token,
     };
-    console.log(superUser);
     return superUser;
   }
 
@@ -145,7 +144,6 @@ class AuthService {
     const { username, password, csrfToken } = credentials;
 
     if (!username || !password || !csrfToken) return null;
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
     if (username === admin && password === adminpw)
       return this.findAdmin(username);

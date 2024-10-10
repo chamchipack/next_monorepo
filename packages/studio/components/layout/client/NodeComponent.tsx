@@ -1,15 +1,18 @@
 "use client";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
-import { useClientSize } from "package/src/hooks/useMediaQuery";
-import { breadCrumbState } from "@/config/recoil/breadcrumb/state";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { authUser } from "@/config/recoil/recoilState";
 import { toggleCollapsed } from "@/config/recoil/sample/toggle";
+import { breadCrumbState } from "@/config/recoil/breadcrumb/state";
+
+import { motion } from "framer-motion";
+
 import { Box, Typography } from "@mui/material";
-import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { motion } from "framer-motion"; // framer-motion import 추가
+
+import { useClientSize } from "package/src/hooks/useMediaQuery";
 import useIsRendering from "package/src/hooks/useRenderStatus";
 
 interface PathInfo {

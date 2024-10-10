@@ -1,24 +1,24 @@
 "use client";
 import React from "react";
-import { Box, Typography, IconButton } from "@mui/material";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import HeaderButton from "./HeaderButton";
-import MenuToggleIcon from "./MenuToggle";
-import { useClientSize } from "package/src/hooks/useMediaQuery";
-import { motion } from "framer-motion";
-import HeaderClock from "./HeaderClock";
-import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+
 import { useRecoilState } from "recoil";
 import { authUser } from "@/config/recoil/recoilState";
-import {
-  kboFont,
-  pretendardFont,
-  nanumFont,
-  tmoneyFont,
-} from "package/styles/fonts/module";
 
-const Header = () => {
+import { signOut } from "next-auth/react";
+import { motion } from "framer-motion";
+
+import { Box, Typography, IconButton } from "@mui/material";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+
+import { nanumFont } from "package/styles/fonts/module";
+import { useClientSize } from "package/src/hooks/useMediaQuery";
+
+import HeaderButton from "./HeaderButton";
+import MenuToggleIcon from "./MenuToggle";
+import HeaderClock from "./HeaderClock";
+
+const HeaderContainer = () => {
   const isMobile = useClientSize("sm");
   const router = useRouter();
   const [user, setUser] = useRecoilState(authUser);
@@ -85,10 +85,10 @@ const Header = () => {
           </Box>
         </Box>
 
-        <HeaderButton />
+        {isMobile && <HeaderButton />}
       </Box>
     </>
   );
 };
 
-export default Header;
+export default HeaderContainer;

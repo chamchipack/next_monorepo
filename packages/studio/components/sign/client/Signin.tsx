@@ -1,19 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useRecoilState } from "recoil";
-import { authUser } from "@/config/recoil/recoilState";
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
 
-import ProgressDialog from "@/components/modal/ProgressModal";
-import { useSession } from "next-auth/react";
-import CloseIcon from "@mui/icons-material/Close";
-
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-
+import ProgressDialog from "package/src/Modal/ProgressModal";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import {
   Button,
@@ -28,7 +20,7 @@ import {
   AlertTitle,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import AlertModal from "../modal/AlertModal";
+import AlertModal from "../../modal/AlertModal";
 
 const defaultTheme = createTheme();
 
@@ -38,12 +30,6 @@ const Signin = () => {
   const [openAlert, setOpenAlert] = useState<boolean>(false);
 
   const onCloseAlert = () => setOpenAlert(false);
-
-  const [user, setUser] = useRecoilState(authUser);
-  const { data: session, status } = useSession();
-
-  const spUser = process.env.NEXT_PUBLIC_SUPER_ACCOUNT;
-  const spPw = process.env.NEXT_PUBLIC_SUPER_ACC_PW;
 
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
@@ -65,7 +51,6 @@ const Signin = () => {
         username: email,
         password: password,
       });
-      console.info(result);
 
       if (result?.ok) router.push("/workspace/student");
       else {

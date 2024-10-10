@@ -16,7 +16,7 @@ import NotificationImportantIcon from "@mui/icons-material/NotificationImportant
 import DefaultGrid from "@/components/schema/v2/DefaultGrid";
 import DefaultToolbar from "./lib/DefaultToolbar";
 import CustomNoRowsOverlay from "@/components/common/layout/overlay/DatagridOverlay";
-import AntSwitch from "@/components/common/others/Switch/AntSwitch";
+import AntSwitch from "package/src/Interactive/AntSwitch";
 import { GridColDef } from "@mui/x-data-grid";
 import { useStudentData } from "./hooks/hook";
 import { OpenType, DrawerType, buttonOptions } from "./hooks";

@@ -1,23 +1,19 @@
-"use client";
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import {
-  Box,
-  IconButton,
-  ListItemButton,
-  ListItemIcon,
-  SvgIconProps,
-  Typography,
-} from "@mui/material";
-import { motion } from "framer-motion";
-import ProgressDialog from "../modal/ProgressModal";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { toggleCollapsed } from "@/config/recoil/sample/toggle";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import EditAccessAtom from "@/config/type/access/state";
+
+import { Box, IconButton, SvgIconProps, Typography } from "@mui/material";
+
+import { useRecoilState } from "recoil";
 import { breadCrumbState } from "@/config/recoil/breadcrumb/state";
+
+import { useSession } from "next-auth/react";
+import { motion } from "framer-motion";
+
+import EditAccessAtom from "@/config/type/access/state";
 import menuConfig, { getIsEditable } from "@/config/menu-configure/menu-config";
+
+import ProgressDialog from "package/src/Modal/ProgressModal";
 
 interface Menu {
   _id: string;
@@ -33,15 +29,14 @@ const breadCrumbFind = (path: string) =>
   };
 
 export default function HeaderButton() {
-  const [isRendering, setIsRendering] = useState(false);
   const router = useRouter();
   const { data: session } = useSession();
   const pathname = usePathname() || "";
 
-  const [, setEditAccessState] = useRecoilState(EditAccessAtom);
-
+  const [isRendering, setIsRendering] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [currentPath, setCurrentPath] = useState<string>("");
+
+  const [, setEditAccessState] = useRecoilState(EditAccessAtom);
   const [, setBreadCrumb] = useRecoilState(breadCrumbState);
 
   const handleOpen = () => setOpenModal(true);

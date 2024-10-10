@@ -1,23 +1,14 @@
 import React from "react";
-import Header from "@/components/sample/Header";
-import Sidebar from "@/components/sample/Sidebar";
-import NodeComponent from "./NodeComponent";
+import HeaderContainer from "@/components/layout/client/header/HeaderContainer";
+import BodyContainer from "@/components/layout/server/BodyContainer";
 
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <Header />
-      <div
-        style={{
-          // minHeight: "100vh",
-          display: "flex",
-        }}
-      >
-        <Sidebar />
-        <NodeComponent children={children} />
-      </div>
+      <HeaderContainer />
+      <BodyContainer children={children} />
     </>
   );
 }

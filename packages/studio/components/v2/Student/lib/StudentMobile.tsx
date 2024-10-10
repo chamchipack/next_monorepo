@@ -18,7 +18,7 @@ import DefaultToolbar from "./DefaultToolbar";
 import { useRecoilValue } from "recoil";
 import EditAccessAtom from "@/config/type/access/state";
 import { initialStudentData } from "@/config/type/default/students";
-import AntSwitch from "@/components/common/others/Switch/AntSwitch";
+import AntSwitch from "package/src/Interactive/AntSwitch";
 import db from "@/api/module";
 
 interface Props {

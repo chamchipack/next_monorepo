@@ -19,8 +19,6 @@ import DefaultToolbar from "./DefaultToolbar";
 import { useRecoilValue } from "recoil";
 import EditAccessAtom from "@/config/type/access/state";
 import { initialAttendanceData } from "@/config/type/default/attendance";
-import AntSwitch from "@/components/common/others/Switch/AntSwitch";
-import db from "@/api/module";
 
 const weeks: {
   [key in string]: string;

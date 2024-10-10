@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import StudentForm from "./StudentForm";
 import SessionForm from "./SessionForm";
-import AntSwitch from "@/components/common/others/Switch/AntSwitch";
+import AntSwitch from "package/src/Interactive/AntSwitch";
 import { Assemble, SessionSubmit, StudentSubmit, SubmitForm } from ".";
 import moment from "moment";
 

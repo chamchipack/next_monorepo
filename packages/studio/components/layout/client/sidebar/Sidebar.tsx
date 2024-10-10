@@ -1,12 +1,15 @@
 "use client";
+import { useRecoilValue } from "recoil";
+import { toggleCollapsed } from "@/config/recoil/sample/toggle";
+
+import { Avatar, Box, Divider, Stack, Typography } from "@mui/material";
+
+import { useSession } from "next-auth/react";
+import { motion } from "framer-motion";
+
 import useIsRendering from "package/src/hooks/useRenderStatus";
 import { useClientSize } from "package/src/hooks/useMediaQuery";
-import { toggleCollapsed } from "@/config/recoil/sample/toggle";
-import { Avatar, Box, Divider, Stack, Typography } from "@mui/material";
-import { useRecoilValue } from "recoil";
-import MenuList from "@/components/sample/MenuList";
-import { motion } from "framer-motion";
-import { useSession } from "next-auth/react";
+import MenuList from "./MenuList";
 
 export default function Sidebar() {
   const isMobile = useClientSize("sm");
