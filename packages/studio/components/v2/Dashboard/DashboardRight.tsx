@@ -6,17 +6,25 @@ import AddCardIcon from "@mui/icons-material/AddCard";
 import AttendanceList from "./lib/AttendanceList";
 import moment from "moment";
 import PaymentList from "./lib/PaymentList";
+import { useClientSize } from "package/src/hooks/useMediaQuery";
 
 interface Props {
   [key: string]: any;
 }
 
 const DashboardRight = (props: Props) => {
+  const isMobile = useClientSize("sm");
   const [toggle, setToggle] = useState<string>("attendance");
 
   return (
     <>
-      <Box sx={{ width: "100%", height: "100%", p: props.padding ?? 3, }}>
+      <Box
+        sx={{
+          width: "100%",
+          height: "90%",
+          p: props.padding ?? 3,
+        }}
+      >
         <Box sx={{ display: "flex", flexDirection: "row" }}>
           <Box
             sx={{

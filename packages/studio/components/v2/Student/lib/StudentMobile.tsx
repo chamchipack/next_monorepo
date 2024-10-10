@@ -12,7 +12,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import { DrawerType, OpenType, buttonOptions } from "../hooks";
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 import { useEffect, useState } from "react";
 import DefaultToolbar from "./DefaultToolbar";
 import { useRecoilValue } from "recoil";

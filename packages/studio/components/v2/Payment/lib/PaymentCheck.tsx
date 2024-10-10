@@ -9,7 +9,7 @@ import db from "@/api/module";
 import { useRecoilState } from "recoil";
 import PaymentDataAtom from "./state";
 import moment from "moment";
-import { RegularPayment, Student } from "@/v2/type/students";
+import { RegularPayment, Student } from "@/config/type/default/students";
 import { PaymentStatus, Rows } from ".";
 import { Class } from "@/config/type/default/class";
 import { useClassData } from "../hooks/hook";

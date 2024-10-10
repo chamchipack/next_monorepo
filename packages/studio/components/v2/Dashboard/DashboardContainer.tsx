@@ -30,6 +30,7 @@ const Page = () => {
       sx={{
         display: "flex",
         flexDirection: "row",
+        height: `calc(100vh - ${100}px)`,
       }}
     >
       <Box sx={{ width: "100%", p: 1 }}>

@@ -5,15 +5,11 @@ import { getData } from "@/api/module/fetch";
 const MainPage = async () => {
   const params = { target: "student", type: "search", options: {}, sort: {} };
   const result = await getData(params);
-  const form = {
-    rows: result?.data?.items,
-    total: result?.data?.items?.length,
-  };
+  const initialTotalData = result?.data?.totalItems ?? 0;
   return (
     <>
       <StudentFilter />
-      <div>{form?.total}그억</div>
-      <StudentGrid />
+      <StudentGrid total={initialTotalData} />
     </>
   );
 };

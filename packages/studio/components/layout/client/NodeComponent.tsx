@@ -15,41 +15,49 @@ import { Box, Typography } from "@mui/material";
 import { useClientSize } from "package/src/hooks/useMediaQuery";
 import useIsRendering from "package/src/hooks/useRenderStatus";
 
+import styles from "../layout.module.css";
+import { Skeleton } from "@mui/material";
 interface PathInfo {
   pathname: string;
   breadCrumb: { title?: string; desc?: string };
 }
 
 const PathInformation = ({ pathname, breadCrumb }: PathInfo) => {
-  const isMobile = useClientSize("sm");
+  // if (isMobile) return null;
   const [isClient, setIsClient] = useState(false);
-
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  if (!isClient) return null;
-
-  if (isMobile) return null;
-
-  if (!breadCrumb?.title) return null;
+  if (!isClient)
+    return (
+      <>
+        <div className={styles["responsive-component"]}>
+          <Skeleton sx={{ width: 100, height: 30 }} />
+          <Skeleton sx={{ width: 200, height: 30 }} />
+        </div>
+      </>
+    );
 
   return (
-    <Box sx={{ mb: 2, mt: 2 }}>
+    <div
+      style={{ marginBottom: 2, marginTop: 2 }}
+      className={styles["responsive-component"]}
+    >
       {pathname !== "/workspace/main" && (
         <>
           <Typography variant="h5" sx={{ fontSize: "bold", mb: 1 }}>
-            {breadCrumb?.title || "dddd"}
+            {breadCrumb?.title || ""}
           </Typography>
           <Typography
             variant="subtitle2"
             style={{ color: "#C2C2C2", fontSize: "bold" }}
           >
-            {breadCrumb?.desc || "qqqqq"}
+            {breadCrumb?.desc || ""}
           </Typography>
         </>
       )}
-    </Box>
+    </div>
   );
 };
 
@@ -69,7 +77,7 @@ export default function NodeComponent({
   const sidebarWidth = !isRendering ? 0 : isMobile ? 0 : isCollapsed ? 60 : 180;
 
   useEffect(() => {
-    if (session) {
+    if (session && !user?._id) {
       const { id, isAdmin, isSuperAccount, name, menuAccess, username } =
         session?.user;
       setUser({

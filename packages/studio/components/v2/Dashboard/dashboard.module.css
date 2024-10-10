@@ -1,0 +1,17 @@
+.responsive-web {
+  display: block;
+}
+
+.responsive-mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .responsive-web {
+    display: none;
+  }
+
+  .responsive-mobile {
+    display: block;
+  }
+}

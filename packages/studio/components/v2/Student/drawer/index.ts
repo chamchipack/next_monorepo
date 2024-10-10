@@ -1,5 +1,5 @@
 import { Day, LessonFlexible, TimeSet } from "@/config/type/default/session";
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 
 export type StudentSubmit = {
   id?: string;

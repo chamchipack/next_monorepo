@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { PaymentRows } from ".";
 import db from "@/api/module";
 import { Class } from "@/config/type/default/class";
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 import {
   Alert,
   Box,

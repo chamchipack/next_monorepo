@@ -2,7 +2,7 @@ import moment from "moment";
 import { useCallback, useEffect, useState } from "react";
 import { AttendStatus, AttendStatusTemplate, Rows } from ".";
 import db from "@/api/module";
-import { RegularPayment, Student } from "@/v2/type/students";
+import { RegularPayment, Student } from "@/config/type/default/students";
 import { CircleSharp } from "@mui/icons-material";
 import {
   Alert,

@@ -6,24 +6,21 @@ import SearchIcon from "@mui/icons-material/Search";
 import {
   Box,
   Button,
-  FormControl,
   Grid,
   IconButton,
-  InputAdornment,
   InputBase,
-  OutlinedInput,
   Skeleton,
   useTheme,
 } from "@mui/material";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { CircleSharp, SearchSharp } from "@mui/icons-material";
 import { useClientSize } from "package/src/hooks/useMediaQuery";
-import useIsRendering from "package/src/hooks/useRenderStatus";
+import styles from "./student.module.css";
+
+import SearchInput from "package/src/Interactive/Input/SearchInput";
 
 const StudentFilter = () => {
   const theme = useTheme();
   const isMobile = useClientSize("sm");
-  const isRendering = useIsRendering();
 
   const searchKeywordRef = useRef<HTMLInputElement>(null);
 
@@ -117,17 +114,17 @@ const StudentFilter = () => {
     };
   }, []);
 
-  if (!isRendering)
-    return (
-      <>
-        <Box sx={{ display: "flex", flexDirection: "row" }}>
-          <Skeleton sx={{ width: 100, height: 30, mr: 1 }} />
-          <Skeleton sx={{ width: 100, height: 30, mr: 1 }} />
-          <Skeleton sx={{ width: 100, height: 30 }} />
-        </Box>
-        <Skeleton sx={{ width: "100%", height: 30 }} />
-      </>
-    );
+  // if (!isRendering)
+  //   return (
+  //     <>
+  //       <Box sx={{ display: "flex", flexDirection: "row" }}>
+  //         <Skeleton sx={{ width: 100, height: 30, mr: 1 }} />
+  //         <Skeleton sx={{ width: 100, height: 30, mr: 1 }} />
+  //         <Skeleton sx={{ width: 100, height: 30 }} />
+  //       </Box>
+  //       <Skeleton sx={{ width: "100%", height: 30 }} />
+  //     </>
+  //   );
 
   return (
     <>
@@ -136,6 +133,7 @@ const StudentFilter = () => {
           display: "flex",
           flexDirection: "row",
           backgroundColor: "white",
+          justifyContent: "space-between",
         }}
         sx={{ mt: isMobile ? 0 : 3 }}
       >
@@ -261,7 +259,7 @@ const StudentFilter = () => {
                 회차결제
               </Button>
             </Box>
-            {!isMobile && (
+            <div className={styles["responsive-web"]} style={{ width: "100%" }}>
               <Box
                 sx={{
                   background: (theme) => theme.palette.background.default,
@@ -317,73 +315,52 @@ const StudentFilter = () => {
                   회차결제 필요여부
                 </Button>
               </Box>
-            )}
+            </div>
           </>
+          <div className={styles["responsive-mobile"]}>
+            <IconButton
+              onClick={onClickInputBase}
+              sx={{
+                border: (theme) =>
+                  `1px solid ${clickStatus ? "black" : theme.palette.grey[200]}`,
+                background: (theme) => (clickStatus ? "black" : "white"),
+                borderRadius: "8px", // 약간의 곡선이 있는 정사각형
+                width: 26, // 버튼의 가로/세로 크기를 동일하게 설정
+                height: 26,
+                "&:hover": {
+                  backgroundColor: "#e0e0e0", // hover 시 배경색
+                },
+              }}
+            >
+              <SearchIcon
+                sx={{
+                  fontSize: 20,
+                  color: clickStatus ? "white" : "text.primary",
+                }}
+              />{" "}
+            </IconButton>
+          </div>
         </Grid>
 
-        {isMobile ? (
-          <IconButton
-            onClick={onClickInputBase}
-            sx={{
-              border: (theme) =>
-                `1px solid ${clickStatus ? "black" : theme.palette.grey[200]}`,
-              background: (theme) => (clickStatus ? "black" : "white"),
-              borderRadius: "8px", // 약간의 곡선이 있는 정사각형
-              width: 26, // 버튼의 가로/세로 크기를 동일하게 설정
-              height: 26,
-              "&:hover": {
-                backgroundColor: "#e0e0e0", // hover 시 배경색
-              },
+        <div
+          className={styles["responsive-web"]}
+          style={{ justifyContent: "flex-end" }}
+        >
+          <SearchInput
+            searchKeywordRef={searchKeywordRef}
+            placeholder="이름을 입력해주세요"
+            borderRadius={8}
+            borderColor={theme.palette.primary.main}
+            onSearchClick={() => {
+              setDatagridStudentState({
+                ...datagridStudentState,
+                "name.like": searchKeywordRef.current?.value,
+              });
             }}
-          >
-            <SearchIcon
-              sx={{
-                fontSize: 20,
-                color: clickStatus ? "white" : "text.primary",
-              }}
-            />{" "}
-          </IconButton>
-        ) : (
-          <FormControl
-            size="small"
-            style={{
-              marginLeft: "auto",
-              maxWidth: isMobile ? "200px" : "300px",
-            }}
-          >
-            <OutlinedInput
-              id="search"
-              inputRef={searchKeywordRef}
-              placeholder="이름을 입력해주세요"
-              sx={{
-                borderRadius: 8,
-                border: (theme) => `2px solid ${theme.palette.primary.main}`,
-                "> fieldset": { border: 0 },
-              }}
-              type="text"
-              onKeyDown={handleKeyDownSearch}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    edge="end"
-                    onClick={() =>
-                      setDatagridStudentState({
-                        ...datagridStudentState,
-                        "name.like": searchKeywordRef.current?.value,
-                      })
-                    }
-                    onMouseDown={(e: React.MouseEvent<HTMLButtonElement>) =>
-                      e.preventDefault()
-                    }
-                    aria-label="search"
-                  >
-                    <SearchSharp color="primary" />
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-        )}
+            onKeyDown={handleKeyDownSearch}
+            buttonColor="primary"
+          />
+        </div>
       </Box>
 
       {isMobile && clickStatus && (
@@ -392,21 +369,21 @@ const StudentFilter = () => {
             mt: 1,
             display: "flex",
             alignItems: "center",
-            backgroundColor: "#f0f0f0", // 회색 배경색
-            borderRadius: "8px", // 약간의 둥근 모서리
-            width: "100%", // 100% 너비
-            padding: "1px 2px", // 내부 여백
+            backgroundColor: "#f0f0f0",
+            borderRadius: "8px",
+            width: "100%",
+            padding: "1px 2px",
           }}
         >
           <InputBase
             inputRef={searchKeywordRef}
-            sx={{ ml: 1, flex: 1 }} // 왼쪽 여백과 flex로 공간 채우기
+            sx={{ ml: 1, flex: 1 }}
             placeholder="이름을 입력해주세요."
             inputProps={{ "aria-label": "search" }}
             onKeyDown={handleKeyDownSearch}
           />
           <IconButton
-            sx={{ p: "4px" }} // 아이콘에 패딩 추가
+            sx={{ p: "4px" }}
             aria-label="search"
             onClick={() =>
               setDatagridStudentState({

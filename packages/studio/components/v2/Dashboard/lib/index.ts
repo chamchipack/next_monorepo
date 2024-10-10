@@ -1,4 +1,4 @@
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 
 export type AttendStatus =
   | "standby"

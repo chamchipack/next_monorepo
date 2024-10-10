@@ -5,7 +5,7 @@ import * as echarts from "echarts/core";
 import db from "@/api/module";
 import CardComponent from "./CardComponent";
 import LineChartBase from "./LineChartBase";
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 
 interface Props {
   width?: string | number;

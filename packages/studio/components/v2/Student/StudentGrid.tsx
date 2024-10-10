@@ -26,11 +26,9 @@ import Form from "./drawer/DrawerForm";
 import db from "@/api/module";
 import { useClientSize } from "package/src/hooks/useMediaQuery";
 import StudentMobile from "./lib/StudentMobile";
-import useIsRendering from "package/src/hooks/useRenderStatus";
 
-const StudentGrid = () => {
+const StudentGrid = ({ total = 0 }) => {
   const isMobile = useClientSize("sm");
-  const isRendering = useIsRendering();
 
   const [pagination, setPagination] = useState({ page: 1, perPage: 10 });
   const [selectedRow, setSelectedRow] = useState(initialStudentData);
@@ -40,7 +38,7 @@ const StudentGrid = () => {
   const editAccessState = useRecoilValue(EditAccessAtom);
 
   const {
-    data = { rows: [], total: 0 },
+    data = { rows: [], total },
     isLoading,
     refetch,
   } = useStudentData("student", pagination);
@@ -195,8 +193,6 @@ const StudentGrid = () => {
     []
   );
 
-  // if (!isRendering) return <Skeleton sx={{ width: 100, height: 30, mr: 1 }} />;
-
   return (
     <div>
       {!isMobile ? (
@@ -210,33 +206,37 @@ const StudentGrid = () => {
               # 결과 {data.total} 건
             </Typography>
           </Box>
-          <DefaultGrid
-            slots={{
-              noRowsOverlay: NoRowsMessageOverlay,
-              toolbar: GridToolbar,
-            }}
-            paginationMode="server"
-            loading={isLoading}
-            rows={{ total: data.total, data: data.rows }}
-            columns={columns}
-            page={pagination.page}
-            pageSize={pagination.perPage}
-            onPageChange={handlePageChange}
-            setPagination={setPagination}
-            pageSizeOptions={[10, 20, 30]}
-            onRowDoubleClick={(row) => {
-              if (!editAccessState) return;
-              setDrawertype(OpenType.update);
-              setDrawerState(DrawerType.form);
-            }}
-            onRowSelectionModelChange={([rowId = ""]) => {
-              if (!rowId) return;
-              const row =
-                data.rows.find(({ id = "" }) => rowId === id) ??
-                initialStudentData;
-              setSelectedRow(row);
-            }}
-          />
+          {isLoading ? (
+            <Skeleton sx={{ width: "100%", height: 250 }} />
+          ) : (
+            <DefaultGrid
+              slots={{
+                noRowsOverlay: NoRowsMessageOverlay,
+                toolbar: GridToolbar,
+              }}
+              paginationMode="server"
+              loading={isLoading}
+              rows={{ total: data.total, data: data.rows }}
+              columns={columns}
+              page={pagination.page}
+              pageSize={pagination.perPage}
+              onPageChange={handlePageChange}
+              setPagination={setPagination}
+              pageSizeOptions={[10, 20, 30]}
+              onRowDoubleClick={(row) => {
+                if (!editAccessState) return;
+                setDrawertype(OpenType.update);
+                setDrawerState(DrawerType.form);
+              }}
+              onRowSelectionModelChange={([rowId = ""]) => {
+                if (!rowId) return;
+                const row =
+                  data.rows.find(({ id = "" }) => rowId === id) ??
+                  initialStudentData;
+                setSelectedRow(row);
+              }}
+            />
+          )}
         </>
       ) : (
         <StudentMobile

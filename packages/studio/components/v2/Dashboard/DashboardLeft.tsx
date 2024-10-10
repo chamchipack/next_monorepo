@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import CardComponent from "./lib/CardComponent";
 import { useCallback, useEffect, useState } from "react";
 import db from "@/api/module";
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 import moment from "moment";
 import ChartBox from "./lib/ChartBox";
 import PaymentChart from "./lib/PaymentChart";

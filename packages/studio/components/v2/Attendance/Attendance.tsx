@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import db from "@/api/module";
 import moment from "moment";
-import { RegularPayment, Student } from "@/v2/type/students";
+import { RegularPayment, Student } from "@/config/type/default/students";
 import AttendanceFilter from "./lib/AttendanceFilter";
 import { useRecoilState } from "recoil";
 import AttendanceDataAtom from "./lib/state";

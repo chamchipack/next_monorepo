@@ -1,5 +1,5 @@
 import db from "@/api/module";
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 import { Collection } from ".";
 
 interface Pagination {

@@ -25,7 +25,7 @@ import {
   Attendance,
   AttendanceDataModel,
 } from "@/config/type/default/attendance";
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 import AlertModal from "../Alert/Modal";
 import json2xlsx from "@/config/utils/xlsx";
 

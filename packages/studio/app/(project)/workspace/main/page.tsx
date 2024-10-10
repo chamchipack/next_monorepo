@@ -1,9 +1,6 @@
-import _ from "./_"
-
+import DashboardContainer from "@/components/v2/Dashboard/DashboardContainer";
 const Page = () => {
-
-  return (<_ />
-  );
+  return <DashboardContainer />;
 };
 
 export default Page;

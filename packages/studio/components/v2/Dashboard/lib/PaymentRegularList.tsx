@@ -4,7 +4,7 @@ import db from "@/api/module";
 import { Class } from "@/config/type/default/class";
 import moment from "moment";
 import { PaymentStatus } from "../../Payment/lib";
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 import {
   Alert,
   Box,

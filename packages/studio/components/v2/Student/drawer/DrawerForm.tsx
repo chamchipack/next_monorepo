@@ -1,4 +1,4 @@
-import { Student } from "@/v2/type/students";
+import { Student } from "@/config/type/default/students";
 import CloseIcon from "@mui/icons-material/Close";
 import { DrawerType, OpenType } from "../hooks";
 import React, { useEffect, useRef, useState } from "react";
